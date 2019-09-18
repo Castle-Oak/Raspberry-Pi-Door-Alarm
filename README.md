@@ -8,3 +8,5 @@ This is an example of a door alarm written in Python on Raspberry Pi.
 - Soldering Eequipment (Iron, Solder, thin guage wire)
 
 Solder the the leads from the magnetic reed switch to GPIO pin 2 and ground, polarity is not important.
+
+
