@@ -24,12 +24,13 @@ def get_secrets(secret):
 def pushover(token, user, message):
     conn = http.client.HTTPSConnection("api.pushover.net:443")
     conn.request("POST", "/1/messages.json",
-                urllib.parse.urlencode({
-                    "token": token,
-                    "user": user,
-                    "message": message,
-                }), {"Content-type": "application/x-www-form-urlencoded"})
+                 urllib.parse.urlencode({
+                     "token": token,
+                     "user": user,
+                     "message": message,
+                 }), {"Content-type": "application/x-www-form-urlencoded"})
     conn.getresponse()
+
 
 secrets_dict = get_secrets(secret_name)
 
@@ -60,9 +61,10 @@ while True:
         elapsed_time = int(timer_end - timer_start)
         current_time = datetime.now().isoformat()
         message = (
-                "Door CLOSED at {}\n"
-                "Elapsed time ajar: {} seconds".format(current_time, elapsed_time)
-                )
+            "Door CLOSED at {}\n"
+            "Elapsed time ajar: {} seconds".format(
+                current_time, elapsed_time)
+        )
         print(message)
         pushover(secrets_dict['token'],
                  secrets_dict['user'],
